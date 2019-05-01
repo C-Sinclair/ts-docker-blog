@@ -1,3 +1,4 @@
+const development = process.env.NODE_ENV !== 'production'
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const htmlPlugin = new HtmlWebpackPlugin({
@@ -29,10 +30,20 @@ module.exports = {
                     options: {
                         modules: true,
                         localIdentName: '[name]__[local]___[hash:base64:5]',
-                        camelCase: true
-                        // sourceMap: isDevelopment
+                        camelCase: true,
+                        importLoaders: 1
                       }
-                }, {
+                }, 
+                {
+                    loader: 'postcss-loader',
+                    options: {
+                        ident: 'postcss',
+                        plugins: [
+                          require('autoprefixer')()
+                        ]
+                    }
+                },
+                {
                     loader: 'sass-loader',
                     options: {
                         includePaths: [

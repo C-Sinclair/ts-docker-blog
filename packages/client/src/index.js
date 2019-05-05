@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 import { ApolloProvider } from 'react-apollo'
 import { ApolloClient } from 'apollo-client'
 import { createHttpLink } from 'apollo-link-http'
-import { InMemoryCache } from 'apollo-cache-memory'
+import { InMemoryCache } from 'apollo-cache-inmemory'
 
 import Header from './components/Header'
 import { Sidebar, SidebarItem } from './components/Sidebar'

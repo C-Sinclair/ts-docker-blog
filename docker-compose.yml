@@ -1,0 +1,35 @@
+version: '2'
+services:
+
+  # client:
+  #   build: ./packages/client
+  #   volumes:
+  #     - ./packages/client:/usr/src/app
+  #     - usr/src/app/node_modules
+
+  server:
+    build: ./packages/server
+    volumes:
+      - ./packages/server:/usr/src/app
+    ports:
+      - 80:80
+    links:
+      - mongo
+    restart: always
+
+  mongo:
+    image: mongo
+    ports: 
+      - 27017:27017
+    env_file:
+      - ./.env
+    container_name: mongo
+    volumes:
+      - ./data:/data/db
+    
+networks:
+  frontend:
+  backend:
+
+volumes:
+  db:

@@ -1,12 +1,19 @@
 {
-    "extends": "../tsconfig.json",
+    "extends": "../../tsconfig.json",
     "compilerOptions": {
-        "target": "es6",
+        "target": "es2015",
         "module": "commonjs",
         "moduleResolution": "node",
+        "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
         "rootDir": "src",
         "outDir": "dist",
-        "declaration": true
+        "declaration": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "skipLibCheck": true
     },
-    "compileOnSave": true
+    "compileOnSave": true,
+    "exclude": ["node_modules"],
+    "include": ["./src/**/*.tsx", "./src/**/*.ts"],
+    "references": [{ "path": "../common" }]
 }

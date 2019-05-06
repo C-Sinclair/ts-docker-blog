@@ -1,5 +1,10 @@
 const development = process.env.NODE_ENV !== 'production'
 const path = require('path')
+const webpack = require('webpack')
+const WebpackNotifierPlugin = require('webpack-notifier')
+const webpackNotifierPlugin = new WebpackNotifierPlugin({
+    alwaysNotify: true
+})
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const htmlPlugin = new HtmlWebpackPlugin({
     template: "./src/index.html",
@@ -13,8 +18,27 @@ const extractTextPlugin = new ExtractTextPlugin({
 const STYLES_DIR = path.resolve('src', 'assets', 'styles')
 
 module.exports = {
+    devtool: 'eval',
+    entry: [ 
+        'react-hot-loader/patch',
+        'webpack-dev-server/client?http://localhost:3000',
+        'webpack/hot/only-dev-server',
+        './src/index.tsx' 
+    ],
+    output: {
+        filename: 'bundle.js',
+        publicPath: './dist',
+        path: path.resolve('dist')
+    },
     module: {
         rules: [{
+            test: /\.tsx?$/,
+            loaders: [
+                "ts-loader",
+                "babel-loader"
+            ]
+        },
+        {
             test: /\.js$/,
             exclude: /node_modules/,
             use: {
@@ -56,6 +80,8 @@ module.exports = {
         }]
     },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        webpackNotifierPlugin,
         htmlPlugin,
         extractTextPlugin
     ]

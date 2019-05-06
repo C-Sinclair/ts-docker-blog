@@ -1,0 +1,16 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "target": "es6",
+        "module": "es6",
+        "moduleResolution": "node",
+        "rootDir": "src",
+        "outDir": "build",
+        "noImplicitAny": false,
+        "noEmitOnError": true,
+        "jsx": "preserve"
+    },
+    "compileOnSave": true,
+    "exclude": ["node_modules"],
+    "include": ["./src/**/*.tsx", "./src/**/*.ts"]
+}

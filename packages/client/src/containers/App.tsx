@@ -1,24 +1,9 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
+import { Component } from 'react'
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
-import { ApolloProvider } from 'react-apollo'
-import { ApolloClient } from 'apollo-client'
-import { createHttpLink } from 'apollo-link-http'
-import { InMemoryCache } from 'apollo-cache-inmemory'
-
-import Header from './components/Header'
-import { Sidebar, SidebarItem } from './components/Sidebar'
-import Article from './components/Article'
-
-import './assets/styles/_globals.sass'
-
-const httpLink = createHttpLink({
-    uri: 'http://localhost:4000'
-})
-const client = new ApolloClient({
-    link: httpLink,
-    cache: new InMemoryCache()
-})
+import Header from '../components/Header'
+import { Sidebar, SidebarItem } from '../components/Sidebar'
+import Article from '../components/Article'
+import '../assets/styles/_globals.sass'
 
 class App extends Component {
 
@@ -60,9 +45,4 @@ class App extends Component {
     }
 }
 
-ReactDOM.render(
-    <ApolloClient client={ client }>
-        <App />
-    </ApolloClient>,
-    document.getElementById("content")
-)
+export default App

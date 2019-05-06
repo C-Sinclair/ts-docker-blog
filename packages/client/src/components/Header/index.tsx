@@ -1,5 +1,5 @@
-import React from 'react'
-import styles from './header.sass'
+import * as React from 'react'
+import * as styles from './header.module.sass'
 
 const Header = () => {
     return (

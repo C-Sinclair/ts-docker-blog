@@ -2,15 +2,13 @@
     "extends": "../../tsconfig.json",
     "compilerOptions": {
         "target": "es6",
-        "module": "es6",
-        "moduleResolution": "node",
+        "lib": [ "es2015", "es6", "dom", "esnext" ],
+        "module": "commonjs",
         "rootDir": "src",
         "outDir": "build",
         "noImplicitAny": false,
-        "noEmitOnError": true,
-        "jsx": "preserve"
+        "jsx": "preserve",
+        "types": [ "node" ]
     },
-    "compileOnSave": true,
-    "exclude": ["node_modules"],
-    "include": ["./src/**/*.tsx", "./src/**/*.ts"]
+    "compileOnSave": true
 }
